@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "instance_name": "packer-dinivas-docker",
+    "ansible_roles_path": "galaxy_roles",
+    "flavor": "m1.small",
+    "image_name": "Dinivas Docker Centos7",
+    "image_tags": "dinivas",
+    "image_visibility": "public"
+  },
+  "builders": [{
+    "type": "openstack",
+    "source_image": "{{user `source_image_id`}}",
+    "flavor": "{{user `flavor`}}",
+    "image_visibility": "{{user `image_visibility` }}",
+    "ssh_username": "{{user `ssh_user` }}",
+    "image_name": "{{user `image_name` }}",
+    "image_tags": "{{user `image_tags` }}",
+    "instance_name": "{{user `instance_name`}}"
+  }],
+  "provisioners": [{
+    "type": "ansible",
+    "ansible_env_vars": [
+      "ANSIBLE_ROLES_PATH={{user `ansible_roles_path` }}"
+    ],
+    "user": "{{user `ssh_user` }}",
+    "playbook_file": "./playbook.yml",
+    "extra_arguments": [],
+    "host_alias": "{{user `instance_name`}}"
+  }]
+}

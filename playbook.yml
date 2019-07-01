@@ -1,0 +1,9 @@
+---
+- name: Provision Image Dinivas Docker to build
+  hosts: packer-dinivas-docker
+  become: true
+  vars:
+    docker_users:
+      - centos
+  roles:
+    - role: geerlingguy.docker
