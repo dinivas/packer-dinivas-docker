@@ -3,8 +3,8 @@
     "instance_name": "packer-dinivas-docker",
     "ansible_roles_path": "galaxy_roles",
     "flavor": "m1.small",
-    "image_name": "Dinivas Docker Centos7",
-    "image_tags": "dinivas",
+    "image_name": "Dinivas Docker",
+    "image_tags": "dinivas,docker",
     "image_visibility": "public"
   },
   "builders": [{
